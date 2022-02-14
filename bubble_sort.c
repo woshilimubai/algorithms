@@ -1,23 +1,30 @@
 #include <stdio.h>
-#include <string.h>
 
-#define N 10
+#define MAXSIZE 100
+
+void input();
+void output();
+void bubble_sort();
+
+int nums[MAXSIZE];
+int count = 0;
+
 int main()
 {
-    printf("Please input N numbers:\n>");
-    int nums[N];
-    int temp, i, j;
+    input();
+    bubble_sort();
+    output();
 
-    // get the nums
-    for (i = 0; i < N; i++)
-    {
-        scanf("%d", &nums[i]);
-    }
+    return 0;
+}
 
-    // sort the number
-    for (i = 0; i < N-1; i++)
+// bubble sort function
+void bubble_sort()
+{
+    int i, j, temp;
+    for (i = 0; i < count-1; i++)
     {
-        for (j = 0; j < N-i-1; j++)
+        for (j = 0; j < count-i-1; j++)
         {
             if (nums[j] > nums[j+1])
             {
@@ -27,14 +34,30 @@ int main()
             }
         }
     }
-    
-    // print sorted numbers
-    printf("The result:\n");
-    for (i = 0; i < N; i++)
+
+}
+
+// input numbers
+void input()
+{
+    int i;
+    char s;
+    printf("please input less than 100 numbers, end with enter:\n");
+    for (i = 0; s != '\n'; i++)
     {
+        scanf("%d", &nums[i]);
+        s = getchar();
+        count++;
+    }
+}
+
+// output numbers
+void output()
+{
+    printf("sorted numbers:\n");
+    for (int i = 0; i < count; i++){
         printf("%d\t", nums[i]);
     }
     printf("\n");
-
-    return 0;
 }
+
