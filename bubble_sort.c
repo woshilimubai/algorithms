@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAXSIZE 100
+#define MAXSIZE 10
 
 void input();
 void output();
@@ -42,7 +42,7 @@ void input()
 {
     int i;
     char s;
-    printf("please input less than 100 numbers, end with enter:\n");
+    printf("please input less than %d numbers, end with enter:\n", MAXSIZE);
     for (i = 0; s != '\n'; i++)
     {
         scanf("%d", &nums[i]);

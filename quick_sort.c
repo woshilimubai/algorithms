@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAXSIZE 100
+#define MAXSIZE 10
 
 void input(); //输入数组
 void output(); //输出数组
@@ -10,6 +10,15 @@ void quick_sort(int s, int e); //快速排序
 
 int arr[MAXSIZE];
 int count = 0;
+
+int main()
+{
+    input();
+    quick_sort(1, count);
+    output();
+
+    return 0;
+}
 
 //一趟快排
 //定义一个high，low，key(记录枢轴的值)
@@ -47,7 +56,7 @@ void input()
 {
     int x, i;
     char s;
-    printf("please input less than 100 numbers, end with enter:\n");
+    printf("please input less than %d numbers, end with enter:\n", MAXSIZE);
     for (i = 1; s != '\n'; i++)
     {
         scanf("%d", &arr[i]);
@@ -64,13 +73,5 @@ void output()
         printf("%d\t", arr[i]);
     }
     printf("\n");
-}
-
-int main(){
-    input();
-    quick_sort(1, count);
-    output();
-    system("pause");
-    return 0;
 }
 

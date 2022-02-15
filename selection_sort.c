@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXSIZE 100
+#define MAXSIZE 10
 
 void input();
 void output();
@@ -26,7 +26,7 @@ void input()
 {
     int i;
     char s;
-    printf("please input less than 100 numbers, end with enter:\n");
+    printf("please input less than %d numbers, end with enter:\n", MAXSIZE);
     for (i = 0; s != '\n'; i++)
     {
         scanf("%d", &nums[i]);
@@ -38,40 +38,23 @@ void input()
 // selection sort function
 void selection_sort()
 {
-    int i, j, temp;
+    int i, j, min, temp;
     // sort the number
     for (i = 0; i < count; i++)
     {
+        min = i;
+        // 只记录最小值的下标,循环结束后再交换
         for (j = i + 1; j < count; j++)
         {
-            if (nums[i] > nums[j])
+            if (nums[min] > nums[j])
             {
-                temp = nums[j];
-                nums[j] = nums[i];
-                nums[i] = temp;
-            }
-            
-        }
-    }
-}
-
-// bubble sort function
-void bubble_sort()
-{
-    int i, j, temp;
-    for (i = 0; i < count-1; i++)
-    {
-        for (j = 0; j < count-i-1; j++)
-        {
-            if (nums[j] > nums[j+1])
-            {
-                temp = nums[j];
-                nums[j] = nums[j+1];
-                nums[j+1] = temp;
+                min = j;
             }
         }
+        temp = nums[i];
+        nums[i] = nums[min];
+        nums[min] = temp;
     }
-
 }
 
 // output numbers
@@ -83,3 +66,4 @@ void output()
     }
     printf("\n");
 }
+
